@@ -11,9 +11,7 @@ class TextEditor:
     # Assigning root
     self.root = root
     # Title of the window
-    self.root.title("Eclipse")
-    # Window Geometry
-    self.root.geometry("1200x700+200+150")
+    self.root.title("Eternum")
     # Initializing filename
     self.filename = None
     # Declaring Title variable
@@ -22,26 +20,26 @@ class TextEditor:
     self.status = StringVar()
 
     # Creating Titlebar
-    self.titlebar = Label(self.root,textvariable=self.title,font=("times new roman",15,"bold"),bd=2,relief=GROOVE)
+    self.titlebar = Label(self.root,textvariable=self.title,font=("Calibri",15,"bold"),bd=2,relief=GROOVE)
     # Packing Titlebar to root window
     self.titlebar.pack(side=TOP,fill=BOTH)
     # Calling Settitle Function
     self.settitle()
 
     # Creating Statusbar
-    self.statusbar = Label(self.root,textvariable=self.status,font=("times new roman",15,"bold"),bd=2,relief=GROOVE)
+    self.statusbar = Label(self.root,textvariable=self.status,font=("Consolas",15,"bold"),bd=2,relief=GROOVE)
     # Packing status bar to root window
     self.statusbar.pack(side=BOTTOM,fill=BOTH)
     # Initializing Status
-    self.status.set("Welcome To Text Editor")
+    # self.status.set("Eternum")
 
     # Creating Menubar
-    self.menubar = Menu(self.root,font=("times new roman",15,"bold"),activebackground="skyblue")
+    self.menubar = Menu(self.root,font=("Consolas",15,"bold"),activebackground="skyblue")
     # Configuring menubar on root window
     self.root.config(menu=self.menubar)
 
     # Creating File Menu
-    self.filemenu = Menu(self.menubar,font=("times new roman",12,"bold"),activebackground="skyblue",tearoff=0)
+    self.filemenu = Menu(self.menubar,font=("Consolas",12,"bold"),activebackground="skyblue",tearoff=0)
     # Adding New file Command
     self.filemenu.add_command(label="New",accelerator="Ctrl+N",command=self.newfile)
     # Adding Open file Command
@@ -52,13 +50,17 @@ class TextEditor:
     self.filemenu.add_command(label="Save As",accelerator="Ctrl+A",command=self.saveasfile)
     # Adding Seprator
     self.filemenu.add_separator()
+    # Change Font
+    self.filemenu.add_command(label="Change font settings",accelerator="Ctrl+O",command=self.openfile)
+    # Adding Seprator
+    self.filemenu.add_separator()
     # Adding Exit window Command
     self.filemenu.add_command(label="Exit",accelerator="Ctrl+E",command=self.exit)
     # Cascading filemenu to menubar
     self.menubar.add_cascade(label="File", menu=self.filemenu)
 
     # Creating Edit Menu
-    self.editmenu = Menu(self.menubar,font=("times new roman",12,"bold"),activebackground="skyblue",tearoff=0)
+    self.editmenu = Menu(self.menubar,font=("Consolas",12,"bold"),activebackground="skyblue",tearoff=0)
     # Adding Cut text Command
     self.editmenu.add_command(label="Cut",accelerator="Ctrl+X",command=self.cut)
     # Adding Copy text Command
@@ -73,7 +75,7 @@ class TextEditor:
     self.menubar.add_cascade(label="Edit", menu=self.editmenu)
 
     # Creating Help Menu
-    self.helpmenu = Menu(self.menubar,font=("times new roman",12,"bold"),activebackground="skyblue",tearoff=0)
+    self.helpmenu = Menu(self.menubar,font=("Consolas",12,"bold"),activebackground="skyblue",tearoff=0)
     # Adding About Command
     self.helpmenu.add_command(label="About",command=self.infoabout)
     # Cascading helpmenu to menubar
@@ -82,7 +84,7 @@ class TextEditor:
     # Creating Scrollbar
     scrol_y = Scrollbar(self.root,orient=VERTICAL)
     # Creating Text Area
-    self.txtarea = Text(self.root,yscrollcommand=scrol_y.set,font=("times new roman",15,"bold"),state="normal",relief=GROOVE)
+    self.txtarea = Text(self.root,yscrollcommand=scrol_y.set,font=("Consolas",15,"bold"),state="normal",relief=GROOVE)
     # Packing scrollbar to root window
     scrol_y.pack(side=RIGHT,fill=Y)
     # Adding Scrollbar to text area
@@ -262,6 +264,8 @@ class TextEditor:
 
 # Creating TK Container
 root = Tk()
+# Set the window size to maximized
+root.state("zoomed")
 # Passing Root to TextEditor Class
 TextEditor(root)
 # Root Window Looping
